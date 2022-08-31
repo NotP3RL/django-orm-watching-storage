@@ -22,10 +22,7 @@ def format_duration(seconds_inside):
 
 def is_visit_long(visit, minutes=60):
     seconds_inside = get_duration(visit)
-    if seconds_inside >= minutes*60:
-        return True
-    else:
-        return False
+    return seconds_inside >= minutes*60
 
 
 class Passcard(models.Model):

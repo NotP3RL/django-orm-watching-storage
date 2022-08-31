@@ -10,19 +10,19 @@ def get_duration(visit):
         delta = leaved_at - entered_at
     else:
         delta = now - entered_at
-    seconds_inside = delta.total_seconds()
-    return seconds_inside
+    seconds = delta.total_seconds()
+    return seconds
 
 
-def format_duration(seconds_inside):
-    hours_inside = int(seconds_inside // 3600)
-    minutes_inside = int((seconds_inside % 3600) // 60)
-    return f'{hours_inside}:{minutes_inside}'
+def format_duration(seconds):
+    hours = int(seconds // 3600)
+    minutes = int((seconds % 3600) // 60)
+    return f'{hours}:{minutes}'
 
 
 def is_visit_long(visit, minutes=60):
-    seconds_inside = get_duration(visit)
-    return seconds_inside >= minutes*60
+    seconds = get_duration(visit)
+    return seconds >= minutes*60
 
 
 class Passcard(models.Model):

@@ -10,8 +10,8 @@ def storage_information_view(request):
         entered_at = timezone.localtime(non_closed_visit.entered_at)
         time_now = timezone.now()
         delta = time_now - entered_at
-        seconds_inside = delta.total_seconds()
-        duration = format_duration(seconds_inside)
+        seconds = delta.total_seconds()
+        duration = format_duration(seconds)
         who_entered = non_closed_visit.passcard.owner_name
         format_non_closed_visits.append({
             'who_entered': who_entered,

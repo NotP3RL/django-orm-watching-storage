@@ -8,5 +8,4 @@ def active_passcards_view(request):
     context = {
         'active_passcards': active_passcards
     }
-    print(Visit.objects.all())
     return render(request, 'active_passcards.html', context)

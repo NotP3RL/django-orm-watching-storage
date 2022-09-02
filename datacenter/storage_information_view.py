@@ -1,4 +1,4 @@
-from datacenter.models import Visit, format_duration
+from datacenter.models import Visit, get_duration, format_duration
 from django.shortcuts import render
 from django.utils import timezone
 
@@ -8,9 +8,7 @@ def storage_information_view(request):
     format_non_closed_visits = []
     for non_closed_visit in non_closed_visits:
         entered_at = timezone.localtime(non_closed_visit.entered_at)
-        time_now = timezone.now()
-        delta = time_now - entered_at
-        seconds = delta.total_seconds()
+        seconds = get_duration(non_closed_visit)
         duration = format_duration(seconds)
         who_entered = non_closed_visit.passcard.owner_name
         format_non_closed_visits.append({

@@ -4,7 +4,7 @@ from django.utils import timezone
 
 
 def storage_information_view(request):
-    non_closed_visits = Visit.objects.filter(leaved_at=None)
+    non_closed_visits = Visit.objects.filter(leaved_at__isnull=True)
     format_non_closed_visits = []
     for non_closed_visit in non_closed_visits:
         entered_at = timezone.localtime(non_closed_visit.entered_at)
